@@ -11,7 +11,7 @@ namespace OfflineMapDemo
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MenuPage());
         }
 
         protected override void OnStart()

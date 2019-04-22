@@ -6,16 +6,24 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using OfflineMapDemo.Helpers;
+using System.IO;
 
 namespace OfflineMapDemo.Droid
 {
     [Activity(Label = "OfflineMapDemo", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        private static string MbTilesLocationOnAndroid => 
+            System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            MbTilesSample.MbTilesLocation = MbTilesLocationOnAndroid;
+            MbTilesHelper.DeployMbTilesFile(s => File.Create(System.IO.Path.Combine(MbTilesLocationOnAndroid, s)));
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

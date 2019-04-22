@@ -2,13 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:OfflineMapDemo"
+			 xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms"
              x:Class="OfflineMapDemo.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <mapsui:MapView x:Name="mapView"
+		    VerticalOptions="FillAndExpand"
+            HorizontalOptions="Fill"
+		    BackgroundColor="Gray" 
+		    Margin="10" />
+            <Label x:Name="info" 
+            HorizontalOptions="CenterAndExpand"
+            Text="unknown" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
